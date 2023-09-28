@@ -1,0 +1,213 @@
+﻿"Cube Title","Product Id","CANSIM Id",URL,"Cube Notes","Archive Status",Frequency,"Start Reference Period","End Reference Period","Total number of dimensions",Universe,"Variable List"
+"Infant and perinatal mortality, by sex, three-year average, Canada, provinces, territories, health regions and peer groups",13100078,102-4319,"https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1310007801",1;2;3;4,"CURRENT - a cube available to the public and that is current",Occasional,2000-01-01,2015-01-01,4,,
+
+"Dimension ID","Dimension name","Dimension Notes","Dimension Correction Notes","Dimension Definitions"
+1,Geography,5;6,,
+2,Sex,,,
+3,"Infant or perinatal mortality",,,
+4,Characteristics,8;9;10;11;12,,
+
+"Dimension ID","Member Name","Classification Code","Member ID","Parent Member ID",Terminated,"Member Notes","Member Correction Notes","Member Geo Attribute Keys","Member Definitions"
+1,Canada,[11124],1,,,,,,
+1,"Newfoundland and Labrador",[10],2,1,,,,,
+1,"Eastern Regional Health Authority, Newfoundland and Labrador",[1011],3,2,,,,,
+1,"Central Regional Health Authority, Newfoundland and Labrador",[1012],4,2,,,,,
+1,"Western Regional Health Authority, Newfoundland and Labrador",[1013],5,2,,,,,
+1,"Labrador-Grenfell Regional Health Authority, Newfoundland and Labrador",[1014],6,2,,,,,
+1,"Prince Edward Island",[11],7,1,,,,,
+1,"Prince Edward Island",[1100],8,7,,,,,
+1,"Nova Scotia",[12],9,1,,,,,
+1,"Zone 1 - Western, Nova Scotia",[1201],10,9,,,,,
+1,"Zone 2 - Northern, Nova Scotia",[1202],11,9,,,,,
+1,"Zone 3 - Eastern, Nova Scotia",[1203],12,9,,,,,
+1,"Zone 4 - Central, Nova Scotia",[1204],13,9,,,,,
+1,"New Brunswick",[13],14,1,,,,,
+1,"Zone 1 (Moncton area), New Brunswick",[1301],15,14,,,,,
+1,"Zone 2 (Saint John area), New Brunswick",[1302],16,14,,,,,
+1,"Zone 3 (Fredericton area), New Brunswick",[1303],17,14,,,,,
+1,"Zone 4 (Edmundston area), New Brunswick",[1304],18,14,,,,,
+1,"Zone 5 (Campbellton area), New Brunswick",[1305],19,14,,,,,
+1,"Zone 6 (Bathurst area), New Brunswick",[1306],20,14,,,,,
+1,"Zone 7 (Miramichi area), New Brunswick",[1307],21,14,,,,,
+1,Quebec,[24],22,1,,,,,
+1,"Région du Bas-Saint-Laurent, Quebec",[2401],23,22,,,,,
+1,"Région du Saguenay - Lac-Saint-Jean, Quebec",[2402],24,22,,,,,
+1,"Région de la Capitale-Nationale, Quebec",[2403],25,22,,,,,
+1,"Région de la Mauricie et du Centre-du-Québec, Quebec",[2404],26,22,,,,,
+1,"Région de l'Estrie, Quebec",[2405],27,22,,,,,
+1,"Région de Montréal, Quebec",[2406],28,22,,,,,
+1,"Région de l'Outaouais, Quebec",[2407],29,22,,,,,
+1,"Région de l'Abitibi-Témiscamingue, Quebec",[2408],30,22,,,,,
+1,"Région de la Côte-Nord, Quebec",[2409],31,22,,,,,
+1,"Région du Nord-du-Québec, Quebec",[2410],32,22,,,,,
+1,"Région de la Gaspésie - Îles-de-la-Madeleine, Quebec",[2411],33,22,,,,,
+1,"Région de la Chaudière-Appalaches, Quebec",[2412],34,22,,,,,
+1,"Région de Laval, Quebec",[2413],35,22,,,,,
+1,"Région de Lanaudière, Quebec",[2414],36,22,,,,,
+1,"Région des Laurentides, Quebec",[2415],37,22,,,,,
+1,"Région de la Montérégie, Quebec",[2416],38,22,,,,,
+1,"Région du Nunavik, Quebec",[2417],39,22,,,,,
+1,"Région des Terres-Cries-de-la-Baie-James, Quebec",[2418],40,22,,,,,
+1,"Ontario by Local Health Integration Network",,41,1,,7;14,,,
+1,"Erie St. Clair Health Integration Network, Ontario",[3501],42,41,,,,,
+1,"South West Health Integration Network, Ontario",[3502],43,41,,,,,
+1,"Waterloo Wellington Health Integration Network, Ontario",[3503],44,41,,,,,
+1,"Hamilton Niagara Haldimand Brant Health Integration Network, Ontario",[3504],45,41,,,,,
+1,"Central West Health Integration Network, Ontario",[3505],46,41,,,,,
+1,"Mississauga Halton Health Integration Network, Ontario",[3506],47,41,,,,,
+1,"Toronto Central Health Integration Network, Ontario",[3507],48,41,,,,,
+1,"Central Health Integration Network, Ontario",[3508],49,41,,,,,
+1,"Central East Health Integration Network, Ontario",[3509],50,41,,,,,
+1,"South East Health Integration Network, Ontario",[3510],51,41,,,,,
+1,"Champlain Health Integration Network, Ontario",[3511],52,41,,,,,
+1,"North Simcoe Muskoka Health Integration Network, Ontario",[3512],53,41,,,,,
+1,"North East Health Integration Network, Ontario",[3513],54,41,,,,,
+1,"North West Health Integration Network, Ontario",[3514],55,41,,,,,
+1,"Ontario by Health Unit",,56,1,,7;14,,,
+1,"District of Algoma Health Unit, Ontario",[3526],57,56,,,,,
+1,"Brant County Health Unit, Ontario",[3527],58,56,,,,,
+1,"Durham Regional Health Unit, Ontario",[3530],59,56,,,,,
+1,"Elgin-St. Thomas Health Unit, Ontario",[3531],60,56,,,,,
+1,"Grey Bruce Health Unit, Ontario",[3533],61,56,,,,,
+1,"Haldimand-Norfolk Health Unit, Ontario",[3534],62,56,,,,,
+1,"Haliburton, Kawartha, Pine Ridge District Health Unit, Ontario",[3535],63,56,,,,,
+1,"Halton Regional Health Unit, Ontario",[3536],64,56,,,,,
+1,"City of Hamilton Health Unit, Ontario",[3537],65,56,,,,,
+1,"Hastings and Prince Edward Counties Health Unit, Ontario",[3538],66,56,,,,,
+1,"Huron County Health Unit, Ontario",[3539],67,56,,,,,
+1,"Chatham-Kent Health Unit, Ontario",[3540],68,56,,,,,
+1,"Kingston, Frontenac and Lennox and Addington Health Unit, Ontario",[3541],69,56,,,,,
+1,"Lambton Health Unit, Ontario",[3542],70,56,,,,,
+1,"Leeds, Grenville and Lanark District Health Unit, Ontario",[3543],71,56,,,,,
+1,"Middlesex-London Health Unit, Ontario",[3544],72,56,,,,,
+1,"Niagara Regional Area Health Unit, Ontario",[3546],73,56,,,,,
+1,"North Bay Parry Sound District Health Unit, Ontario",[3547],74,56,,,,,
+1,"Northwestern Health Unit, Ontario",[3549],75,56,,,,,
+1,"City of Ottawa Health Unit, Ontario",[3551],76,56,,,,,
+1,"Oxford County Health Unit, Ontario",[3552],77,56,,,,,
+1,"Peel Regional Health Unit, Ontario",[3553],78,56,,,,,
+1,"Perth District Health Unit, Ontario",[3554],79,56,,,,,
+1,"Peterborough County-City Health Unit, Ontario",[3555],80,56,,,,,
+1,"Porcupine Health Unit, Ontario",[3556],81,56,,,,,
+1,"Renfrew County and District Health Unit, Ontario",[3557],82,56,,,,,
+1,"Eastern Ontario Health Unit, Ontario",[3558],83,56,,,,,
+1,"Simcoe Muskoka District Health Unit, Ontario",[3560],84,56,,,,,
+1,"Sudbury and District Health Unit, Ontario",[3561],85,56,,,,,
+1,"Thunder Bay District Health Unit, Ontario",[3562],86,56,,,,,
+1,"Timiskaming Health Unit, Ontario",[3563],87,56,,,,,
+1,"Waterloo Health Unit, Ontario",[3565],88,56,,,,,
+1,"Wellington-Dufferin-Guelph Health Unit, Ontario",[3566],89,56,,,,,
+1,"Windsor-Essex County Health Unit, Ontario",[3568],90,56,,,,,
+1,"York Regional Health Unit, Ontario",[3570],91,56,,,,,
+1,"City of Toronto Health Unit, Ontario",[3595],92,56,,,,,
+1,Manitoba,[46],93,1,,,,,
+1,"Winnipeg Regional Health Authority, Manitoba",[4601],94,93,,,,,
+1,"Prairie Mountain Health, Manitoba",[4602],95,93,,,,,
+1,"Interlake-Eastern Regional Health Authority, Manitoba",[4603],96,93,,,,,
+1,"Northern Regional Health Authority, Manitoba",[4604],97,93,,,,,
+1,"Southern Health, Manitoba",[4605],98,93,,,,,
+1,Saskatchewan,[47],99,1,,15,,,
+1,"Sun Country Regional Health Authority, Saskatchewan",[4701],100,99,,,,,
+1,"Five Hills Regional Health Authority, Saskatchewan",[4702],101,99,,,,,
+1,"Cypress Regional Health Authority, Saskatchewan",[4703],102,99,,,,,
+1,"Regina Qu'Appelle Regional Health Authority, Saskatchewan",[4704],103,99,,,,,
+1,"Sunrise Regional Health Authority, Saskatchewan",[4705],104,99,,,,,
+1,"Saskatoon Regional Health Authority, Saskatchewan",[4706],105,99,,,,,
+1,"Heartland Regional Health Authority, Saskatchewan",[4707],106,99,,,,,
+1,"Kelsey Trail Regional Health Authority, Saskatchewan",[4708],107,99,,,,,
+1,"Prince Albert Parkland Regional Health Authority, Saskatchewan",[4709],108,99,,,,,
+1,"Prairie North Regional Health Authority, Saskatchewan",[4710],109,99,,,,,
+1,"Mamawetan/Keewatin/Athabasca, Saskatchewan",,110,99,,15,,,
+1,Alberta,[48],111,1,,,,,
+1,"South Zone, Alberta",[4831],112,111,,,,,
+1,"Calgary Zone, Alberta",[4832],113,111,,,,,
+1,"Central Zone, Alberta",[4833],114,111,,,,,
+1,"Edmonton Zone, Alberta",[4834],115,111,,,,,
+1,"North Zone, Alberta",[4835],116,111,,,,,
+1,"British Columbia",[59],117,1,,,,,
+1,"East Kootenay Health Service Delivery Area, British Columbia",[5911],118,117,,,,,
+1,"Kootenay-Boundary Health Service Delivery Area, British Columbia",[5912],119,117,,,,,
+1,"Okanagan Health Service Delivery Area, British Columbia",[5913],120,117,,,,,
+1,"Thompson/Cariboo Health Service Delivery Area, British Columbia",[5914],121,117,,,,,
+1,"Fraser East Health Service Delivery Area, British Columbia",[5921],122,117,,,,,
+1,"Fraser North Health Service Delivery Area, British Columbia",[5922],123,117,,,,,
+1,"Fraser South Health Service Delivery Area, British Columbia",[5923],124,117,,,,,
+1,"Richmond Health Service Delivery Area, British Columbia",[5931],125,117,,,,,
+1,"Vancouver Health Service Delivery Area, British Columbia",[5932],126,117,,,,,
+1,"North Shore/Coast Garibaldi Health Service Delivery Area, British Columbia",[5933],127,117,,,,,
+1,"South Vancouver Island Health Service Delivery Area, British Columbia",[5941],128,117,,,,,
+1,"Central Vancouver Island Health Service Delivery Area, British Columbia",[5942],129,117,,,,,
+1,"North Vancouver Island Health Service Delivery Area, British Columbia",[5943],130,117,,,,,
+1,"Northwest Health Service Delivery Area, British Columbia",[5951],131,117,,,,,
+1,"Northern Interior Health Service Delivery Area, British Columbia",[5952],132,117,,,,,
+1,"Northeast Health Service Delivery Area, British Columbia",[5953],133,117,,,,,
+1,Yukon,[60],134,1,,13,,,
+1,Yukon,[6001],135,134,,13,,,
+1,"Northwest Territories",[61],136,1,,,,,
+1,"Northwest Territories",[6101],137,136,,,,,
+1,Nunavut,[62],138,1,,,,,
+1,Nunavut,[6201],139,138,,,,,
+1,"Peer group A",[A],140,1,,,,,
+1,"Peer group B",[B],141,1,,,,,
+1,"Peer group C",[C],142,1,,,,,
+1,"Peer group D",[D],143,1,,,,,
+1,"Peer group E",[E],144,1,,,,,
+1,"Peer group F",[F],145,1,,,,,
+1,"Peer group G",[G],146,1,,,,,
+1,"Peer group H",[H],147,1,,,,,
+1,"Peer group I",[I],148,1,,,,,
+2,"Both sexes",,1,,,,,,
+2,Males,,2,1,,,,,
+2,Females,,3,1,,,,,
+3,"Infant mortality",,1,,,2,,,
+3,"Perinatal mortality",,2,,,3,,,
+4,Number,,1,,,,,,
+4,Rate,,2,,,,,,
+4,"Low 95% confidence interval, rate",,3,,,,,,
+4,"High 95% confidence interval, rate",,4,,,,,,
+
+Symbol Legend
+Description,Symbol
+"not available for a specific reference period",..
+"less than the limit of detection",<LOD
+"value rounded to 0 (zero) where there is a meaningful distinction between true zero and the value that was rounded",0s
+"data quality: excellent",A
+"data quality: very good",B
+"data quality: good",C
+"data quality: acceptable",D
+"use with caution",E
+"too unreliable to be published.",F
+"not applicable",...
+preliminary,p
+revised,r
+"suppressed to meet the confidentiality requirements of the Statistics Act",x
+terminated,t
+
+"Survey Code","Survey Name"
+3231,"Vital Statistics - Birth Database"
+3233,"Vital Statistics - Death Database"
+3234,"Vital Statistics - Stillbirth Database"
+
+"Subject Code","Subject Name"
+13,Health
+
+"Note ID",Note
+1,"Sources: Statistics Canada, Canadian Vital Statistics, Birth, Death and Stillbirth Databases. The table 13-10-0078-01 is an update of table 13-10-0407-01."
+2,"Infant mortality corresponds to the death of a child under one year of age. Expressed as a rate per 1,000 live births."
+3,"Perinatal deaths include late fetal deaths (stillbirths with a gestational age of 28 weeks or more) and early neonatal deaths (deaths of infants aged less than one week)."
+4,"Numbers and rates in this table may differ from those found in similar data published by the Vital Statistics program as the data here have been tabulated based on postal codes available for place of residence."
+5,"Health regions are administrative areas defined by provincial ministries of health according to provincial legislation. The health regions presented in this table are based on boundaries and names in effect as of December 2015. For complete Canadian coverage, each northern territory represents a health region."
+6,"Peer groups are aggregations of health regions that share similar socio-economic and demographic characteristics, based on data from the 2011 Census of Population and 2011 National Household Survey. These are useful in the analysis of health regions, where important differences may be detected by comparing health regions within a peer group. The nine peer groups are identified by the letters A through I, which are appended to the health region 4-digit code. Caution should be taken when comparing data for the Peer Groups over time due to changes in the Peer Groups. In an analysis involving the peer groups, only one level of geography in Ontario should be used. For more information on the peer groups classification, consult Statistics Canada's publication ""Health Regions: Boundaries and Correspondence with Census Geography"" (catalogue number 82-402-X)."
+7,"In Ontario, Public Health Units (PHU) administer health promotion and disease prevention programs. Local Health Integration Networks (LHIN) are responsible for planning, funding and administering health care programs and services across the province. Data are provided for both PHUs and LHINs. However, since the weights for the Canadian Community Health Survey sample are primarily based on PHUs, only estimates for rates (percentages) are available by LHIN in the profile. Special LHIN weights are available upon request. These weights will allow for more precise estimation at the LHIN level including the estimation of totals."
+8,"Counts and rates in this table are based on three consecutive years of data."
+9,"The 95% confidence interval (CI) illustrates the degree of variability associated with a rate."
+10,"Wide confidence intervals (CIs) indicate high variability, thus, these rates should be interpreted and compared with due caution."
+11,"The following standard symbols are used in this Statistics Canada table: (..) for figures not available for a specific reference period, (...) for figures not applicable and (x) for figures suppressed to meet the confidentiality requirements of the Statistics Act."
+12,"The figures shown in the tables have been subjected to a confidentiality procedure known as controlled rounding to prevent the possibility of associating statistical data with any identifiable individual. Under this method, all figures, including totals and margins, are rounded either up or down to a multiple of 5. Controlled rounding has the advantage over other types of rounding of producing additive tables as well as offering more protection."
+13,"2017 data for Yukon are not available."
+14,"The number of births, stillbirths, and deaths in Ontario for 2016 and 2017 are considered preliminary."
+15,"To avoid data suppression, northern regions in Saskatchewan have been grouped with neighbouring regions, as follows: Athabasca Health Authority (4713) is combined with Mamawetan Churchill River Regional Health Authority (4711) and Keewatin Yatthé Regional Health Authority (4712) and referred to as Mamawetan/Keewatin/Athabasca (4714)."
+
+"Dimension ID","Member ID","Attribute Key",Title,Label,"Long Label",Value
+
+

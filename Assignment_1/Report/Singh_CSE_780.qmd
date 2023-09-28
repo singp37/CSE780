@@ -1,0 +1,285 @@
+---
+title: "STATS/CSE 780 - Homework assignment 1"
+author: "Pankaj S (Student number: XXX)"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+abstract: "Shiny app link for this report, please click [https://singp37.shinyapps.io/assignment_1/](https://singp37.shinyapps.io/assignment_1)"
+format: pdf
+editor: visual
+header-includes:
+   - \usepackage{amsmath}
+   - \usepackage{float}
+   - \usepackage{fancyhdr}
+   - \pagestyle{fancy}
+   - \fancyhf{}
+   - \fancyhead[L]{CSE 780 Assignment 1}
+   - \fancyhead[R]{\thepage}
+bibliography: STATS780.bib
+fontsize: 11pt
+geometry: 
+  - margin = 1in
+linestretch: 1.5
+csl: https://www.zotero.org/styles/apa-single-spaced
+---
+
+```{r setup, include=FALSE}
+# Loading libraries.
+library("this.path")
+library(tidyverse);
+library(readr)
+library(janitor)
+library(patchwork)
+library(knitr)
+library(lubridate)
+
+# Define functions to be used later.
+ shift_column <- function(x, n){
+   c(x[-(seq(n))], rep(NA, n))
+ }
+
+# Loading data.
+setwd(this.dir())
+setwd("..")
+raw_data <- read_csv("data/13100078.csv")
+meta_data <- read_csv("data/13100078_MetaData.csv")
+
+# Filter data for provinces.
+raw_data_provinces <- raw_data |>
+  filter(GEO == "Canada" |
+           GEO == "Yukon" |
+           GEO == "Newfoundland and Labrador" |
+           GEO == "Ontario by Health Unit" |
+           GEO == "New Brunswick" |
+           GEO == "Prince Edward Island" |
+           GEO == "Alberta" |
+           GEO == "Manitoba" |
+           GEO == "Saskatchewan" |
+           GEO == "Quebec" |
+           GEO == "British Columbia" |
+           GEO == "Nova Scotia" |
+           GEO == "Northwest Territories" |
+           GEO == "Nunavut")
+
+# Write .RData for shinyapp
+save(raw_data_provinces, file = "assignment_1/raw_data_provinces.RData")
+
+```
+
+\newpage
+## Introduction
+This report presents infant and perinatal mortality across Canada. An infant or neonate is a newborn under 28 days of age [@noauthor_newborn_nodate] and the perinatal period is defined as the period from the start of pregnancy to one year after the birth of the baby [@noauthor_what_nodate]. Infant mortality and perinatal mortality may serve as indicators of health, gender equality, and poverty in a country [@oecd_infant_2020], aligning with the Sustainable Development Goals set by the United Nations [@noauthor_17_nodate].
+
+The dataset "Infant and perinatal mortality, by sex, three-year average, Canada, provinces, territories, health regions, and peer groups" is sourced from the open government repository of the Government of Canada [@secretariat_infant_nodate]. The data set is updated annually and contains record for the years 2000, 2005, 2010, and 2015. It provides detailed information for provinces, the entire country, and is further categorized by age and sex for both infant and perinatal deaths.^[All materials and reproducible code used are available at https://github.com/singp37/CSE780]
+
+```{r fig_1, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center',  out.width="100%", fig.cap="Infant and Perinatal mortality rate per 1000 live births in Canada"}
+#| label: fig-1
+
+# Infant mortality rate
+infant_m <- raw_data_provinces |>   
+  filter(Sex == "Males" | Sex == "Females" | Sex == "Both sexes") |>
+  filter(Characteristics == "Rate") |>
+  filter(`Infant or perinatal mortality` == "Infant mortality" )
+
+# Infant mortality in Canada.
+infant_m_canada <- infant_m |>
+  filter(GEO == "Canada")
+
+# Plotting infant mortality rate in Canada.
+p1 <- ggplot(infant_m_canada, aes(x = REF_DATE, y = VALUE)) + 
+  geom_point(mapping = aes(shape = Sex), show.legend = FALSE) +
+  geom_smooth(size=0.5, aes(color = Sex), show.legend = FALSE) +
+  labs(
+    x = "Year", y = "Infant mortality rate",
+    color = "Sex", shape = "Sex"
+  ) +
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8),
+    axis.text = element_text(size = 8),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 8)
+  )
+
+# Perinatal mortality rate
+perinatal_m <- raw_data_provinces |>   
+  filter(Sex == "Males" | Sex == "Females" | Sex == "Both sexes") |>
+  filter(Characteristics == "Rate") |>
+  filter(`Infant or perinatal mortality` == "Perinatal mortality" )
+
+# Perinatal mortality in Canada.
+perinatal_m_canada <- perinatal_m |>
+  filter(GEO == "Canada")
+
+# Plotting perinatal mortality rate in Canada.
+p2 <- ggplot(perinatal_m_canada, aes(x = REF_DATE, y = VALUE)) + 
+  geom_point(mapping = aes(shape = Sex)) +
+  geom_smooth(size=0.5, aes(color = Sex)) +
+  
+  labs(
+    x = "Year", y = "Perinatal mortality rate",
+    color = "Sex", shape = "Sex"
+  ) +
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8),
+    axis.text = element_text(size = 8),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 8)
+  )
+
+# Putting infant mortality and perinatal mortality side by side.
+p1 + p2 + plot_layout(ncol = 2, nrow = 1, 
+                      widths = c(2, 2), 
+                      heights = unit(c(4, 1), c('cm', 'null')))
+
+# Finding min and max rows for use in report.
+min_infant_m_canada_row <- infant_m_canada |>
+  filter(Sex == "Both sexes") |>
+  filter(VALUE == min(VALUE))
+
+max_infant_m_canada_row <- infant_m_canada |>
+  filter(Sex == "Both sexes") |>
+  filter(VALUE == max(VALUE))
+
+min_perinatal_m_canada_row <- perinatal_m_canada |>
+  filter(Sex == "Both sexes") |>
+  filter(VALUE == min(VALUE))
+
+max_perinatal_m_canada_row <- perinatal_m_canada |>
+  filter(Sex == "Both sexes") |>
+  filter(VALUE == max(VALUE))
+
+```
+
+Exploratory Data Analysis (EDA) of infant and perinatal deaths can provide insights into the availability and performance of healthcare and establish a baseline for monitoring the progress. @fig-1 above depicts the infant and perinatal mortality rates for males and females in Canada every five years over two decades. Conley and Springer utilize EDA to argue that the infant mortality rate has a direct relationship with a country's health spending [@conley2001welfare]. Macinko finds that the Family Health Program had a direct effect on infant mortality in Brazil [@macinko2006evaluation].
+
+## Methods
+For the purpose of this report, data for all provinces and Canada has been extracted in five-year intervals from 2000 to 2015. Data for both sexes is utilized throughout except for @fig-1, where data pertaining to males, females and both sexes is employed. It is assumed that missing or zero values indicate the absence of data, as is the case for Yukon in @fig-2. The report examines infant mortality and perinatal mortality in parallel, with their relationship visualized in @fig-3.
+
+```{r fig_2, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center',  out.width="100%", fig.cap="Both sexes infant mortality rate per 1000 live births for provinces"}
+#| label: fig-2
+
+# Infant mortality provinces.
+infant_m_provinces <- infant_m |>
+  filter(Sex == "Both sexes")
+
+# Plotting infant mortality for provinces.
+p3 <- ggplot(infant_m_provinces, aes(x = REF_DATE, y = VALUE)) +
+  geom_point() +
+  geom_smooth(size=0.5, aes(color = GEO), show.legend = FALSE) +
+  scale_color_discrete(name="Geographic area") + 
+  scale_shape_discrete(name="Geographic area") + 
+  labs(
+    x = "Year", y = "Infant mortality rate",
+    color = "GEO", shape = "GEO"
+  ) +
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8),
+    axis.text = element_text(size = 8),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 10)
+  )
+
+
+# Perinatal mortality provinces.
+perinatal_m_provinces <- perinatal_m |>
+  filter(Sex == "Both sexes")
+
+# Plotting perinatal mortality for provinces.
+p4 <- ggplot(perinatal_m_provinces, aes(x = REF_DATE, y = VALUE)) +
+  geom_point() +
+  geom_smooth(size=0.5, aes(color = GEO)) +
+  scale_color_discrete(name="Geographic area") + 
+  scale_shape_discrete(name="Geographic area") + 
+  labs(
+    x = "Year", y = "Perinatal mortality rate",
+    color = "GEO", shape = "GEO"
+  ) +
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8),
+    axis.text = element_text(size = 8),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 10)
+  )
+
+# Putting infant mortality and perinatal mortality side by side.
+p3 + p4 + plot_layout(ncol = 2, nrow = 1, 
+                      widths = c(2, 2), 
+                      heights = unit(c(4, 1), c('cm', 'null')))
+
+# For later use in the report.
+max_infant_m_nunavut_row <- infant_m_provinces |>
+  filter(GEO == "Nunavut")|>
+  filter(VALUE == max(VALUE)) |>
+  distinct(VALUE, .keep_all = TRUE)
+
+```
+
+
+```{r fig_4, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center',  out.width="75%", fig.cap="Infant mortality and perinatal mortality"}
+#| label: fig-3
+
+# Extract infant and perinatal mortality.
+infant_perinatal_m <- raw_data_provinces |>   
+  filter(Sex == "Males" | Sex == "Females" | Sex == "Both sexes") |>
+  filter(Characteristics == "Rate") |>
+  filter(`Infant or perinatal mortality` == "Infant mortality" | 
+           `Infant or perinatal mortality` == "Perinatal mortality" ) |>
+  pivot_wider(
+       names_from = `Infant or perinatal mortality`,
+       values_from = VALUE
+     ) |>
+  clean_names()
+  
+# Shift column up by 1
+infant_perinatal_m$perinatal_mortality <- 
+   shift_column(infant_perinatal_m$perinatal_mortality, 1)
+
+# Select rows with rate not NA
+infant_perinatal_m <- infant_perinatal_m[!(is.na(infant_perinatal_m$infant_mortality)), ]
+
+# Select data for geographic areas.
+infant_perinatal_m <- infant_perinatal_m |>
+  filter(sex == "Both sexes")
+
+# Plot infant mortality and perinatal mortality together.
+ggplot(infant_perinatal_m, aes(x = infant_mortality, y = perinatal_mortality)) +
+  geom_point(mapping = aes(color = geo)) +
+  geom_smooth(size=0.5, method = "lm") +
+  scale_color_discrete(name="Geographic area") + 
+  scale_shape_discrete(name="Geographic area") + 
+  labs(
+    x = "Infant mortality", y = "Perinatal mortality"
+  ) +
+  theme(
+    axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8),
+    axis.text = element_text(size = 8),
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 10)
+  )
+
+```
+
+## Results
+@fig-1 illustrates a consistent decline in both infant and perinatal mortality rates across both sexes over time. The lowest recorded infant mortality rate, at `r min_infant_m_canada_row$VALUE` per 1000 live births, was observed in `r min_infant_m_canada_row$REF_DATE`, while the highest, at `r max_infant_m_canada_row$VALUE`, occurred in `r max_infant_m_canada_row$REF_DATE`. In terms of perinatal mortality, the lowest rate of `r min_perinatal_m_canada_row$VALUE` was recorded in `r min_perinatal_m_canada_row$REF_DATE`, while the highest rate of `r max_perinatal_m_canada_row$VALUE` was observed in `r max_perinatal_m_canada_row$REF_DATE`. @fig-2 reveals that data for Yukon is unavailable, while it highlights that Nunavut exhibits significantly higher infant and perinatal mortality rates compared to other provinces. @fig-3 strongly suggests a discernible relationship between infant mortality rate and perinatal mortality rate.
+
+## Discussion
+The minimum infant mortality rate in Canada, at `r min_infant_m_canada_row$VALUE`, occurred in `r min_infant_m_canada_row$REF_DATE`. It has steadily decreased since `r max_perinatal_m_canada_row$REF_DATE` when it was `r max_perinatal_m_canada_row$VALUE`. Among OECD countries, Canada ranks 32nd in terms of infant mortality for 2015 [@oecd_infant_mortality]. In Nunavut, the infant mortality rate was `r max_infant_m_nunavut_row$VALUE` in `r max_infant_m_nunavut_row$REF_DATE`, placing it at 47th position, behind Indonesia for that year.
+
+The findings in this report should be viewed as an indication for further data analysis regarding healthcare in different provinces in Canada. There are distinct patterns among states, with some states like Prince Edward Island appearing to fare better than others like Nunavut.
+
+A pattern of decreasing infant mortality rate over time emerges in Canada. However, when compared with Slovenia, Finland, and Japan, which have infant mortality rates below 2, the room for improvement in healthcare becomes evident. The high death rates in Nunavut indicate the urgent need for improvements in health services.
+
+\newpage
+## References
+::: {#refs}
+:::
+
+\newpage
+## Supplementary Materials
+The R code used in this report.
+ ```{r show-code, ref.label=all_labels(), echo = TRUE, eval=FALSE}
+ ```
+
